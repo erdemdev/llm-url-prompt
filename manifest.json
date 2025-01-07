@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "LLM URL Prompt",
+  "version": "1.0",
+  "description": "Automates entering LLM prompts on X (Grok), Google AI Studio, and Claude AI",
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/i/grok*",
+        "https://aistudio.google.com/prompts/new_chat*",
+        "https://claude.ai/new*"
+      ],
+      "js": ["config.js", "content.js"],
+      "type": "module"
+    }
+  ]
+}
