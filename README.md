@@ -80,9 +80,14 @@ Contributions are welcome! Here's how you can help:
    - Specify your browser version and OS
 
 4. **Code Improvements**
+
    - Bug fixes
    - Performance improvements
    - Code cleanup
    - Documentation updates
 
 Please ensure your code follows the existing style and includes appropriate comments where necessary.
+
+## Roadmap
+
+- [ ] Create a UI for dynamically inserting new websites and XPaths, as website structures are constantly changing.
