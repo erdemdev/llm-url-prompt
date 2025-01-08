@@ -32,7 +32,7 @@ GPT already supports URL parameters for prompts:
 1. Add `?llm_prompt=your prompt here` to any supported website URL
 2. The extension will automatically insert and submit the prompt
 
-### Example
+**Example**
 
 ```
 https://x.com/i/grok?llm_prompt=Tell me a joke
