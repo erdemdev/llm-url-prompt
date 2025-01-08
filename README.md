@@ -32,11 +32,15 @@ GPT already supports URL parameters for prompts:
 1. Add `?llm_prompt=your prompt here` to any supported website URL
 2. The extension will automatically insert and submit the prompt
 
-## Example
+### Example
 
 ```
 https://x.com/i/grok?llm_prompt=Tell me a joke
 ```
+
+### Integration with Other Tools
+
+Instead of installing CLI tools for each AI provider, you can create custom terminal commands to open browsers with pre-filled prompts using URL parameters. This approach simplifies interaction with multiple AI services from your command line.
 
 ## Configuration
 
@@ -52,10 +56,10 @@ Contributions are welcome! Here's how you can help:
 
 1. **Adding Support for New Websites**
 
-   - Fork the repository
-   - Add a new website configuration to `config.js` and `manifest.json`
-   - Test the changes thoroughly
-   - Submit a pull request
+- Fork the repository
+- Add a new website configuration to `config.js` and `manifest.json`
+- Test the changes thoroughly
+- Submit a pull request
 
 2. **How to Add a New Website**
 
@@ -75,16 +79,16 @@ Contributions are welcome! Here's how you can help:
 
 3. **Reporting Issues**
 
-   - Check existing issues before creating a new one
-   - Include steps to reproduce the issue
-   - Specify your browser version and OS
+- Check existing issues before creating a new one
+- Include steps to reproduce the issue
+- Specify your browser version and OS
 
 4. **Code Improvements**
 
-   - Bug fixes
-   - Performance improvements
-   - Code cleanup
-   - Documentation updates
+- Bug fixes
+- Performance improvements
+- Code cleanup
+- Documentation updates
 
 Please ensure your code follows the existing style and includes appropriate comments where necessary.
 
