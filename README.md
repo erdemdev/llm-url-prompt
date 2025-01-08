@@ -68,6 +68,7 @@ Contributions are welcome! Here's how you can help:
   - The textarea/input element XPath
   - The submit button XPath
 - Add a new entry to the `websites` array in `config.js`:
+
   ```javascript
   {
     url: "https://your-website.com/chat",
