@@ -14,11 +14,13 @@ This Chrome extension automates the process of entering LLM prompts on specific 
 - X (Twitter) Grok: https://x.com/i/grok
 - Google AI Studio: https://aistudio.google.com/prompts/new_chat
 - Claude AI: https://claude.ai/new
+- Deepseek: https://chat.deepseek.com/
 
 **Why is GPT not supported?**
 
-GPT already supports URL parameters for prompts:
+GPT (also Perplexity) already supports URL parameters for prompts:
 `https://chat.openai.com/?q=your prompt here`
+`https://www.perplexity.ai/search?q=your prompt here`
 
 ## Installation
 
@@ -76,6 +78,7 @@ Contributions are welcome! Here's how you can help:
     submitButtonXPath: "your-submit-button-xpath"
   }
   ```
+
 - You may need to modify content.js to handle the new website's structure
 
 3. **Reporting Issues**
@@ -96,3 +99,7 @@ Please ensure your code follows the existing style and includes appropriate comm
 ## Roadmap
 
 - [ ] Create a UI for dynamically inserting new websites and XPaths, as website structures are constantly changing.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
