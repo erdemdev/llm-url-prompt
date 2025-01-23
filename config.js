@@ -21,5 +21,12 @@ const config = {
       submitButtonXPath:
         "/html/body/div[3]/div/main/div[2]/div/fieldset/div[1]/div[1]/div[2]/div/div/button",
     },
+    {
+      url: "https://chat.deepseek.com/",
+      textAreaXPath:
+        "/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div[1]/textarea",
+      submitButtonXPath:
+        "/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div[2]",
+    },
   ],
 };

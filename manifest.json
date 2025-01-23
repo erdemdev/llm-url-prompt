@@ -9,7 +9,8 @@
       "matches": [
         "https://x.com/i/grok*",
         "https://aistudio.google.com/prompts/new_chat*",
-        "https://claude.ai/new*"
+        "https://claude.ai/new*",
+        "https://chat.deepseek.com/*"
       ],
       "js": ["config.js", "content.js"],
       "type": "module"
