@@ -2,9 +2,7 @@
 const currentUrl = window.location.href;
 
 // Find matching website configuration
-const website = config.websites.find((site) =>
-  currentUrl.startsWith(site.url),
-);
+const website = config.websites.find((site) => currentUrl.startsWith(site.url));
 
 if (website) {
   // Get prompt from URL parameters
@@ -13,7 +11,10 @@ if (website) {
 
   if (prompt) {
     // Wait for input element to be available
+    let attempts = 0;
+    const maxAttempts = 20; // 10 seconds total with 500ms interval
     const checkElement = setInterval(() => {
+      attempts++;
       const element = document.evaluate(
         website.textAreaXPath,
         document,
@@ -24,6 +25,9 @@ if (website) {
 
       if (element) {
         clearInterval(checkElement);
+        console.log(
+          "[LLM-URL-Prompt] Found input element, attempting to enter text",
+        );
 
         // Handle textarea, contenteditable div, and p tag
         if (element.tagName.toLowerCase() === "textarea") {
@@ -42,6 +46,8 @@ if (website) {
 
         // Try multiple submission methods
         setTimeout(() => {
+          let submissionSuccess = false;
+
           // 1. Try finding and clicking the submit button
           const submitButton = document.evaluate(
             website.submitButtonXPath,
@@ -53,6 +59,8 @@ if (website) {
 
           if (submitButton) {
             submitButton.click();
+            submissionSuccess = true;
+            console.log("[LLM-URL-Prompt] Submitted via button click");
           }
 
           // 2. Try Enter key event on the input element
@@ -66,6 +74,7 @@ if (website) {
               cancelable: true,
             }),
           );
+          console.log("[LLM-URL-Prompt] Sent Enter key event");
 
           // 3. Try form submission if element is in a form
           const form = element.closest("form");
@@ -76,9 +85,29 @@ if (website) {
                 cancelable: true,
               }),
             );
+            submissionSuccess = true;
+            console.log("[LLM-URL-Prompt] Submitted via form submission");
           }
-        }, 100); // Small delay to ensure the input event is processed
+
+          if (!submissionSuccess) {
+            console.warn(
+              "[LLM-URL-Prompt] Warning: No submission method was clearly successful",
+            );
+          }
+        }, 100);
+      } else if (attempts >= maxAttempts) {
+        clearInterval(checkElement);
+        console.error(
+          "[LLM-URL-Prompt] Failed to find input element after 10 seconds",
+        );
       }
-    }, 500); // Check every 500ms
+    }, 500);
+  } else {
+    console.error("[LLM-URL-Prompt] No prompt parameter found in URL");
   }
+} else {
+  console.error(
+    "[LLM-URL-Prompt] No matching website configuration found for:",
+    currentUrl,
+  );
 }

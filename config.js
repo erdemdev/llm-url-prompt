@@ -10,9 +10,9 @@ const config = {
     {
       url: "https://aistudio.google.com/prompts/new_chat",
       textAreaXPath:
-        "/html/body/app-root/div/div/div[3]/div/span/ms-prompt-switcher/ms-chunk-editor/section/footer/div[1]/div[1]/ms-chunk-input/section/ms-text-chunk/ms-autosize-textarea/textarea",
+        "/html/body/app-root/div/div/div[3]/div/span/ms-prompt-switcher/ms-chunk-editor/section/footer/div[1]/div[2]/ms-chunk-input/section/ms-text-chunk/ms-autosize-textarea/textarea",
       submitButtonXPath:
-        "/html/body/app-root/div/div/div[3]/div/span/ms-prompt-switcher/ms-chunk-editor/section/footer/div[1]/div[3]/run-button/button",
+        "/html/body/app-root/div/div/div[3]/div/span/ms-prompt-switcher/ms-chunk-editor/section/footer/div[1]/div[4]/run-button/button",
     },
     {
       url: "https://claude.ai/new",
