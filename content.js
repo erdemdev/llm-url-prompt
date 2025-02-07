@@ -1,16 +1,22 @@
+/**
+ * @typedef {Object} WebsiteConfig
+ * @property {string} url - The base URL of the website
+ * @property {string} textAreaXPath - XPath to the input element
+ * @property {string} submitButtonXPath - XPath to the submit button
+ */
+
 // Get current URL
 const currentUrl = window.location.href;
 
 // Find matching website configuration
+/** @type {WebsiteConfig | undefined} */
 const website = config.websites.find((site) => currentUrl.startsWith(site.url));
 
 if (website) {
-  // Get prompt from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const prompt = urlParams.get("llm_prompt");
 
   if (prompt) {
-    // Wait for input element to be available
     let attempts = 0;
     const maxAttempts = 20; // 10 seconds total with 500ms interval
     const checkElement = setInterval(() => {
@@ -23,7 +29,7 @@ if (website) {
         null,
       ).singleNodeValue;
 
-      if (element) {
+      if (element instanceof HTMLElement) {
         clearInterval(checkElement);
         console.log(
           "[LLM-URL-Prompt] Found input element, attempting to enter text",
@@ -32,7 +38,7 @@ if (website) {
         // Handle textarea, contenteditable div, and p tag
         if (element.tagName.toLowerCase() === "textarea") {
           // Set prompt value for textarea
-          element.value = prompt;
+          /** @type {HTMLTextAreaElement} */ (element).value = prompt;
         } else {
           // Set prompt value for contenteditable elements (div or p)
           element.innerHTML = prompt;
@@ -57,7 +63,7 @@ if (website) {
             null,
           ).singleNodeValue;
 
-          if (submitButton) {
+          if (submitButton instanceof HTMLButtonElement) {
             submitButton.click();
             submissionSuccess = true;
             console.log("[LLM-URL-Prompt] Submitted via button click");
